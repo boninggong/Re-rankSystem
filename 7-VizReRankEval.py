@@ -25,7 +25,7 @@ def viz(m, t_item, metric):
     camfics_personal = pd.read_csv(f'res\\{dataset}\\personal-{algos[1]}-{metric}-daytime.csv', delimiter=',')
     us_bpr_global = pd.read_csv(f'res\\{dataset}\\global-{algos[2]}-{metric}-daytime.csv', delimiter=',')
     us_bpr_personal = pd.read_csv(f'res\\{dataset}\\personal-{algos[2]}-{metric}-daytime.csv', delimiter=',')
-    colors = ['#a8fa23', '#548701', '#ff7c7c', '#c10101', '#7eacf2', '#154b9e', '#9a71f5', '#431e96']
+    colors = ['#a8fa23', '#548701', '#9eff59', '#c10101', '#0a00c2', '#154b9e', '#ba42ff', '#431e96']
 
     fig = plt.figure(figsize=(12.0, 6.0))
     dct = {'lambda': bpr_global['lambda'].tolist(), 'BPR_initial': bpr_global[f'{metric}_{m}_initial'],
@@ -41,13 +41,13 @@ def viz(m, t_item, metric):
     df = pd.DataFrame(dct)
     plt.plot('lambda', 'BPR_initial', data=df, c=colors[2], linestyle='dashed', alpha=1)
     plt.plot('lambda', 'BPR_global', data=df, c=colors[2], linestyle='-.')
-    plt.plot('lambda', 'BPR_personal', data=df, c=colors[3], alpha=0.6)
+    plt.plot('lambda', 'BPR_personal', data=df, c=colors[2], alpha=0.8)
     plt.plot('lambda', 'US-BPR_initial', data=df, c=colors[4], linestyle='dashed', alpha=1)
     plt.plot('lambda', 'US-BPR_global', data=df, c=colors[4], linestyle='-.')
-    plt.plot('lambda', 'US-BPR_personal', data=df, c=colors[5], alpha=0.6)
+    plt.plot('lambda', 'US-BPR_personal', data=df, c=colors[4], alpha=0.8)
     plt.plot('lambda', 'CAMF_ICS_initial', data=df, c=colors[6], linestyle='dashed', alpha=1)
     plt.plot('lambda', 'CAMF_ICS_global', data=df, c=colors[6], linestyle='-.')
-    plt.plot('lambda', 'CAMF_ICS_personal', data=df, c=colors[7], alpha=0.6)
+    plt.plot('lambda', 'CAMF_ICS_personal', data=df, c=colors[6], alpha=0.8)
 
     if ds == 'nprs':
         dataset_label = "#NowPlaying-RS"
