@@ -6,7 +6,7 @@ pd.set_option('display.max_columns', None)
 # Visualizes all opposite re-rank and initial recommendation list evaluation results
 test_items = [25, 50, 100, 200]
 ds = "nprs"
-metric = "Prec"
+metric = "MAP"
 algos = ["BPR", "CAMF_ICS", "UserSplitting-BPR"]
 dist = 'euclidean'
 
@@ -25,7 +25,7 @@ def viz(m, t_item, metric):
     camfics_personal = pd.read_csv(f'res\\{dataset}\\personal-{algos[1]}-{metric}-daytime-op.csv', delimiter=',')
     us_bpr_global = pd.read_csv(f'res\\{dataset}\\global-{algos[2]}-{metric}-daytime-op.csv', delimiter=',')
     us_bpr_personal = pd.read_csv(f'res\\{dataset}\\personal-{algos[2]}-{metric}-daytime-op.csv', delimiter=',')
-    colors = ['#a8fa23', '#548701', '#9eff59', '#c10101', '#0a00c2', '#154b9e', '#ba42ff', '#431e96']
+    colors = ['#a8fa23', '#548701', '#32CD32', '#c10101', '#0a00c2', '#154b9e', '#ba42ff', '#431e96']
 
     fig = plt.figure(figsize=(12.0, 6.0))
     dct = {'lambda': bpr_global['lambda'].tolist(), 'BPR_initial': bpr_global[f'{metric}_{m}_initial'],
@@ -40,13 +40,13 @@ def viz(m, t_item, metric):
 
     df = pd.DataFrame(dct)
     plt.plot('lambda', 'BPR_initial', data=df, c=colors[2], linestyle='dashed', alpha=1)
-    plt.plot('lambda', 'BPR_global', data=df, c=colors[2], linestyle='-.')
+    plt.plot('lambda', 'BPR_global', data=df, c=colors[2], linestyle='dotted')
     plt.plot('lambda', 'BPR_personal', data=df, c=colors[2], alpha=0.8)
     plt.plot('lambda', 'US-BPR_initial', data=df, c=colors[4], linestyle='dashed', alpha=1)
-    plt.plot('lambda', 'US-BPR_global', data=df, c=colors[4], linestyle='-.')
+    plt.plot('lambda', 'US-BPR_global', data=df, c=colors[4], linestyle='dotted')
     plt.plot('lambda', 'US-BPR_personal', data=df, c=colors[4], alpha=0.8)
     plt.plot('lambda', 'CAMF_ICS_initial', data=df, c=colors[6], linestyle='dashed', alpha=1)
-    plt.plot('lambda', 'CAMF_ICS_global', data=df, c=colors[6], linestyle='-.')
+    plt.plot('lambda', 'CAMF_ICS_global', data=df, c=colors[6], linestyle='dotted')
     plt.plot('lambda', 'CAMF_ICS_personal', data=df, c=colors[6], alpha=0.8)
 
     if ds == 'nprs':
