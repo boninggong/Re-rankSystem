@@ -16,3 +16,5 @@ This system re-ranks a given song recommendation list by calculating new scores 
 3. Run https://github.com/boninggong/CARSKitModified as described by the original CARSKit guide (http://arxiv.org/abs/1511.03780).
 4. Move the _k_ recommendation file outputs (e.g. _BPR-1.CSV_ to _BPR-5.CSV_ for _k_ = 5) within _\out\artifacts\CARSKitjar\data\CARSKit.Workspace\\_ to _\input\nprs_200\\_ in this repository. Move the _k_ test set files (_1-test.csv_ to _k-test.csv_) to _\input\nprs_test\\_.
 6. You are now able to run the scripts within this repository to re-rank the given song recommendations and compare accuracy results. The scripts themselves contain extra instructions where necessary.
+
+NOTE: Only the #NowPlaying-RS dataset is supported in the full execution. The InCarMusic dataset was supported, but has been dropped because of its scarcity. There are still some of the initial results of the InCarMusic dataset in the results folder of previous runs. 
