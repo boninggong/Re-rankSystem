@@ -10,14 +10,14 @@ import pandas as pd
 # Re-rank algorithm uses personal mapping in this class
 start_time = time.time()
 
-d_set = 'nprs'  # nprs or car
-algoName = "BPR"
-test_item_amount = 200
+d_set = 'nprs'  # nprs or car (not supported at the moment)
+algoName = "RankALS" # Any initial recommendation algorithm that you wish to re-rank (BPR, US-BPR, RankALS in our case)
+test_item_amount = 200  # Keep at 200
 k = 5
 sub_rerank_sizes = [25, 50, 100]
 
-dist_metric = 'euclidean' # cosine, euclidean
-all_metrics = ["MAP", "Prec"] # Prec, MAP
+dist_metric = 'euclidean'  # euclidean or cosine
+all_metrics = ["MAP", "Prec"]
 metrics_sizes = [10, 25, 'all']
 
 ind = 1
@@ -38,6 +38,7 @@ initial_pred_list = {}
 all_old = []
 all_new = {0: [], 0.1: [], 0.2: [], 0.3: [], 0.4: [], 0.5: [], 0.6: [], 0.7: [], 0.8: [], 0.9: [], 1: []}
 all_correct = {}
+
 
 # Read initial recommendation as input
 def read_java_output(file):

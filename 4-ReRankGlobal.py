@@ -12,23 +12,28 @@ from os import path
 from ModelGlobal import global_model
 from Ranking import ndcg_at, mapk, precision_at
 
+# IMPORTANT: Move the XXX-global-model.csv files to \input\nprs_global_model and rename them to "1-global-model.csv",
+# "2-global-model.csv" etc. Global models stay the same across a given dataset and test set so they can be re-used in
+# each execution. This only needs to be done in the first run of this script
+
 # Re-ranks + evaluates a given initial recommendation list, its users, songs, interactions and contextual dimensions
 # Re-rank algorithm uses global mapping in this class
-# Only need to re-rank the biggest recommendation list for each algorithm, SubReRankPersonal will do smaller sizes
+# Only need to re-rank the biggest recommendation list for each algorithm, SubReRankGlobal will do smaller sizes
 np.set_printoptions(precision=2)
 start_time = time.time()
 
 # GLOBAL PARAMETERS
-d_set = 'nprs'  # nprs or car
-algoName = "RankALS"
-test_item_amount = 200  # 25, 50, 100 or 200
+d_set = 'nprs'  # nprs or car (not supported at the moment)
+algoName = "RankALS" # Any initial recommendation algorithm that you wish to re-rank (BPR, US-BPR, RankALS in our case)
+test_item_amount = 200  # Keep at 200, SubReRankGlobal takes care of 25, 50 and 100
 k = 5
 
-dist_metric = 'euclidean' # cosine, euclidean
-metric_to_use = "MAP" # Prec, MAP
+dist_metric = 'euclidean' # euclidean or cosine
+metric_to_use = "MAP" # MAP or Prec
 metrics_sizes = [10, 25, 'all']
-dimension = 'daytime' # weather, mood
+dimension = 'daytime'
 
+# Only daytime is relevant for the #NowPlaying-RS dataset
 if dimension == 'weather':
     conditions = ['rainy', 'cloudy', 'snowing', 'sunny']
 elif dimension == 'mood':

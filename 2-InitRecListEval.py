@@ -1,14 +1,12 @@
 from __future__ import division
-import time
 import pandas as pd
-import numpy as np
 from statistics import mean
 from Ranking import ndcg_at, mapk, precision_at
 
-# Calculates the initial recommendation list performance scores
+# Calculates the initial recommendation list accuracy scores
 test_item_amounts = [25]
 d_set = 'nprs'  # nprs or car
-algos = ['UserSplitting-BPR', 'BPR', 'CAMF_ICS']
+algos = ['BPR', 'UserSplitting-BPR', 'CAMF_ICS']
 
 for algoName in algos:
     folds = []

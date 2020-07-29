@@ -20,16 +20,17 @@ np.set_printoptions(precision=2)
 start_time = time.time()
 
 # GLOBAL PARAMETERS
-d_set = 'nprs'  # nprs or car
-algoName = "RankALS"
-test_item_amount = 200  # 25, 50, 100 or 200
+d_set = 'nprs'  # nprs or car (not supported at the moment)
+algoName = "RankALS" # Any initial recommendation algorithm that you wish to re-rank (BPR, US-BPR, RankALS in our case)
+test_item_amount = 200  # Keep at 200, SubReRankGlobal takes care of 25, 50 and 100
 k = 5
 
-dist_metric = 'euclidean' # cosine, euclidean
-metric_to_use = "MAP" # Prec, MAP
+dist_metric = 'euclidean' # euclidean or cosine
+metric_to_use = "MAP" # MAP or Prec
 metrics_sizes = [10, 25, 'all']
-dimension = 'daytime' # weather, mood
+dimension = 'daytime'
 
+# Only daytime is relevant for the #NowPlaying-RS dataset
 if dimension == 'weather':
     conditions = ['rainy', 'cloudy', 'snowing', 'sunny']
 elif dimension == 'mood':

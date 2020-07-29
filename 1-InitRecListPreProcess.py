@@ -1,9 +1,9 @@
 import pandas as pd
 import csv
 
-keepPositive = True
-createSubSet = True
-convertRankingScores = True
+keepPositive = True  # Removes all recommendations where there are 0 positive songs recommended
+createSubSet = True  # Creates recommendation lists of 25, 50 and 100 songs, respectively
+convertRankingScores = True  # Only use with ranking based initial recommendation algorithms
 
 test_item_amounts = [200]
 d_set = 'nprs'
@@ -11,7 +11,6 @@ algos = ['BPR', 'UserSplitting-BPR', 'CAMF_ICS']
 k = 5
 
 if keepPositive:
-    # Removes all rows where recommendations do not contain any positive item
     for algoName in algos:
         folds = []
         ind = 1
@@ -50,7 +49,6 @@ if keepPositive:
 
 print()
 if createSubSet:
-    # Create smaller sets of 25, 50 and 100 recommendations
     target_amounts = [25, 50, 100]
     for algoName in algos:
         folds = []

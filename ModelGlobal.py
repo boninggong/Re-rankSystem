@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 # Uses the global audio feature averages for each contextual value as model for re-ranking
 def global_model(fold, d_set, songs, personal_models, num, invalid_songs):
     AUDIO_FEATURES = ["acousticness", "danceability", "energy", "instrumentalness", "loudness",
