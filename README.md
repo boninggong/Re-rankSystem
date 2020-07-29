@@ -9,9 +9,9 @@ This system re-ranks a given song recommendation list by calculating new scores 
 
 ![Execution Pipeline](https://raw.githubusercontent.com/boninggong/Re-rankSystem/master/pipeline.png)
 
-**Input data processing:** https://github.com/boninggong/DataPreProcess
-**Initial recommender system:** https://github.com/boninggong/CARSKitModified
-**Re-rank system & Accuracy evaluation:** this repository
+**Input data processing:** https://github.com/boninggong/DataPreProcess </br>
+**Initial recommender system:** https://github.com/boninggong/CARSKitModified </br>
+**Re-rank system & Accuracy evaluation:** this repository </br>
 
 ### Running the system
 -------------------
